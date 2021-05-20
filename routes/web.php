@@ -42,12 +42,24 @@ Route::get("arreglos",function(){
 
 Route::get('paises',function(){
     $paises =[
-        "COLOMBIA"=>["Capital"=>"Bogota","Moneda"=>"Peso","Poblacion"=>"50.34"],
-        "PERU"=>["Capital"=>"Lima","Moneda"=>"Sol","Poblacion"=>"32.51"],
-        "PARAGUAY"=>["Capital"=>"Asuncion","Moneda"=>"Guarani","Poblacion"=>"7"]
+        "COLOMBIA"=>[
+        "Capital"=>"Bogota",
+        "Moneda"=>"Peso",
+        "Poblacion"=>"50.34"
+    ],
+        "PERU"=>[
+        "Capital"=>"Lima",
+        "Moneda"=>"Sol",
+        "Poblacion"=>"32.51"
+    ],
+        "PARAGUAY"=>[
+        "Capital"=>"Asuncion",
+        "Moneda"=>"Guarani",
+        "Poblacion"=>"7"
+        ]
     ];
 
-    foreach($paises as $nombrepais =>$pais){
+    /*foreach($paises as $nombrepais =>$pais):
         echo"<h1>$nombrepais</h1>";
         echo "<pre>";
         echo($pais["Capital"]);
@@ -55,5 +67,15 @@ Route::get('paises',function(){
         echo($pais["Moneda"]);
         echo "</pre>";
         echo "<hr />";
-    }
+    endforeach;
+*/
+
+//invocar vista
+//llevar los datos a a la vista
+return view("paises")->with("naciones",$paises);
 });
+
+Route::get('formulario_buscador',"MetabuscadorController@formulario_buscador");
+
+Route::post('buscar',"MetabuscadorController@buscar");
+
